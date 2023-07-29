@@ -6,6 +6,9 @@ namespace Portfolio_Project.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.v1 = "Dashboard";
+            ViewBag.v2 = "İstatistikler";
+            ViewBag.v3 = "İstatistikler Sayfası";
             return View();
         }
     }
