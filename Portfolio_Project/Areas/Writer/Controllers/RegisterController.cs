@@ -19,7 +19,7 @@ namespace Portfolio_Project.Areas.Writer.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(new UserRegisterViewModel());
         }
         [HttpPost]
         public async Task<IActionResult> Index(UserRegisterViewModel p)
