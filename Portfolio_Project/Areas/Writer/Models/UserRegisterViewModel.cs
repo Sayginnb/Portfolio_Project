@@ -4,6 +4,13 @@ namespace Portfolio_Project.Areas.Writer.Models
 {
     public class UserRegisterViewModel
     {
+        [Required(ErrorMessage = "Lütfen Adınız Giriniz")]
+        public string Name { get; set; }
+        [Required(ErrorMessage = "Lütfen Soyadınız Giriniz")]
+        public string SurName { get; set; }
+
+        [Required(ErrorMessage = "Lütfen Görsel Urm Değerini Giriniz")]
+        public string ImageUrl { get; set; }
         [Required(ErrorMessage ="Lütfen Kullanıcı Adınız Giriniz")]
         public string UserName { get; set; }
 
