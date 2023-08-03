@@ -26,6 +26,7 @@ namespace Portfolio_Project.Areas.Writer.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 WriterUser w = new WriterUser()
                 {
                     Name = p.Name,
@@ -34,17 +35,21 @@ namespace Portfolio_Project.Areas.Writer.Controllers
                     UserName = p.UserName,
                     ImageUrl = p.ImageUrl
                 };
-                var result = await _userManager.CreateAsync(w, p.Password);
 
-                if (result.Succeeded)
+                if (p.Password == p.ConfirmPassword)
                 {
-                    return RedirectToAction("Index", "Login");
-                }
-                else
-                {
-                    foreach (var item in result.Errors)
+                    var result = await _userManager.CreateAsync(w, p.Password);
+
+                    if (result.Succeeded)
                     {
-                        ModelState.AddModelError("", item.Description);
+                        return RedirectToAction("Index", "Login");
+                    }
+                    else
+                    {
+                        foreach (var item in result.Errors)
+                        {
+                            ModelState.AddModelError("", item.Description);
+                        }
                     }
                 }
             }
