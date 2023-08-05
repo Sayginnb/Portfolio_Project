@@ -1,10 +1,16 @@
-﻿using EntityLayer.Concrete;
+﻿
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Portfolio_Project.Areas.Writer.Models;
+using System.Threading.Tasks;
 
-namespace Portfolio_Project.Areas.Writer.Controllers
+namespace PortfolioProject.Areas.Writer.Controllers
 {
+    [AllowAnonymous]
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class LoginController : Controller
     {
         private readonly SignInManager<WriterUser> _signInManager;
@@ -13,10 +19,34 @@ namespace Portfolio_Project.Areas.Writer.Controllers
         {
             _signInManager = signInManager;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(UserLoginViewModel userLoginViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(userLoginViewModel.Username, userLoginViewModel.Password, true, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Default", new { area = "Writer" });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Hatalı kullanıcı adı veya şifre");
+                }
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
