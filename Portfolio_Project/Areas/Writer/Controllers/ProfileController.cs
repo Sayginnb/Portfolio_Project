@@ -17,11 +17,15 @@ namespace Portfolio_Project.Areas.Writer.Controllers
         {
             _userManager = userManager;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            return View(values);
+            UserEditViewModel model = new UserEditViewModel();
+            model.Name = values.Name;
+            model.Surname = values.SurName;
+            model.PictureURL = values.ImageUrl;
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Index(UserEditViewModel p)
