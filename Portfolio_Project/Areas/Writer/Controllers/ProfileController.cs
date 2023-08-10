@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace Portfolio_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class ProfileController : Controller
     {
         private readonly UserManager<WriterUser> _userManager;
@@ -43,11 +44,21 @@ namespace Portfolio_Project.Areas.Writer.Controllers
             }
             user.Name = p.Name;
             user.SurName = p.Surname;
-            var result = await _userManager.UpdateAsync(user);
-            if (result.Succeeded)
+            if(p.Password == p.PasswordConfirm)
             {
-                return RedirectToAction("Index", "Default");
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
             }
+            else
+            {
+                return BadRequest(error: "Şifreler eşleşmiyor.");
+            }
+            
+            
             return View();
         }
     }

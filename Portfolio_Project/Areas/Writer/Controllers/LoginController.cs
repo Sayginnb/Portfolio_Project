@@ -32,7 +32,7 @@ namespace PortfolioProject.Areas.Writer.Controllers
                 var result = await _signInManager.PasswordSignInAsync(userLoginViewModel.Username, userLoginViewModel.Password, true, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Default", new { area = "Writer" });
+                    return RedirectToAction("Index", "Profile", new { area = "Writer" });
                 }
                 else
                 {

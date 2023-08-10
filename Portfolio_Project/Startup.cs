@@ -50,7 +50,6 @@ namespace Portfolio_Project
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                 options.AccessDeniedPath = "/ErrorPage/Index/";
                 options.LoginPath = "/Writer/Login/Index/";
             });
