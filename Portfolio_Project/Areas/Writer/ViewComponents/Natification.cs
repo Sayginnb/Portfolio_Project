@@ -10,7 +10,7 @@ namespace Portfolio_Project.Areas.Writer.ViewComponents
         AnnouncementManager announcementManager = new AnnouncementManager(new EfAnnouncementDal());
         public IViewComponentResult Invoke()
         {
-            var values = announcementManager.TGetList().Take(5).ToList();
+            var values = announcementManager.TGetList().ToList();
             return View(values);
         }
     }
