@@ -22,7 +22,7 @@ namespace Portfolio_Project.Areas.Writer.Controllers
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             p = values.Email;
-            var messageList = writerMessageManager.TGetListbyFilter(p);
+            var messageList = writerMessageManager.GetListReceiverMessage(p);
             return View(messageList);
         }
     }
