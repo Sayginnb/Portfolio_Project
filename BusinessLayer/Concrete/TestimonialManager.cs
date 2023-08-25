@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _testimonialDal.GetList();
         }
 
+        public List<Testimonial> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TUptade(Testimonial t)
         {
             throw new NotImplementedException();

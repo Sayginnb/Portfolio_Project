@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _contactDal.GetList();
         }
 
+        public List<Contact> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TUptade(Contact t)
         {
             throw new NotImplementedException();

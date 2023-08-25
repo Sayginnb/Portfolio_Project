@@ -13,5 +13,6 @@ namespace BusinessLayer.Abstract
         void TUptade(T t);
         List<T> TGetList();
         T TGetById(int id);
+        List<T> TGetListbyFilter();
     }
 }
