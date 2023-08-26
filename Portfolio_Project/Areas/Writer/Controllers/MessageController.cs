@@ -32,5 +32,15 @@ namespace Portfolio_Project.Areas.Writer.Controllers
             var messageList = writerMessageManager.GetListSenderMessage(p);
             return View(messageList);
         }
+        public IActionResult MessageDetails(int id)
+        {
+            WriterMessage writerMessage = writerMessageManager.TGetById(id);
+            return View(writerMessage);
+        }
+        public IActionResult ReceiverMessageDetails(int id)
+        {
+            WriterMessage writerMessage = writerMessageManager.TGetById(id);
+            return View(writerMessage);
+        }
     }
 }
