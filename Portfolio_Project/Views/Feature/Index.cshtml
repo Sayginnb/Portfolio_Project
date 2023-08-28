@@ -10,17 +10,26 @@
 </div>
 @using (Html.BeginForm("Index", "Feature", FormMethod.Post))
 {
-    @Html.HiddenFor(x =>x.FeatureID)
-    <br />
-    <label>Başlık</label>
-    @Html.TextBoxFor(x=>x.Header, new { @class="form-control"})
-    <br />
-    <label>Ad Soyad</label>
-    @Html.TextBoxFor(x=>x.Name, new { @class="form-control"})
-    <br />
-    <label>Görev</label>
-    @Html.TextBoxFor(x=>x.Title, new { @class="form-control"})
-    <br />
-    <button class="btn btn-success">Güncelle</button>
+    <div class="row">
+        <div class="col">
+            <div class="card bg-default shadow">
+                <div class="card-header bg-transparent border-0">
+                    <h3 class="text-white mb-0">Projelerim</h3>
+                    @Html.HiddenFor(x =>x.FeatureID)
+                    <br />
+                    <label>Başlık</label>
+                    @Html.TextBoxFor(x=>x.Header, new { @class="form-control"})
+                    <br />
+                    <label>Ad Soyad</label>
+                    @Html.TextBoxFor(x=>x.Name, new { @class="form-control"})
+                    <br />
+                    <label>Görev</label>
+                    @Html.TextBoxFor(x=>x.Title, new { @class="form-control"})
+                    <br />
+                    <button class="btn btn-success">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 

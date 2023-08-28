@@ -48,9 +48,6 @@ namespace Portfolio_Project.Controllers
         [HttpGet]
         public IActionResult EditPortfolio(int id)
         {
-            ViewBag.v1 = "Proje Listesi";
-            ViewBag.v2 = "Projelerim";
-            ViewBag.v3 = "Proje Düzenleme";
             var values = portfolioManager.TGetById(id);
             return View(values);
         }
