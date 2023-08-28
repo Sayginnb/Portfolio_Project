@@ -44,6 +44,7 @@ namespace Portfolio_Project.Areas.Writer.Controllers
             }
             user.Name = p.Name;
             user.SurName = p.Surname;
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
             if(p.Password == p.PasswordConfirm)
             {
                 user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
