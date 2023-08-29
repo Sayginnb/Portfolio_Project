@@ -37,7 +37,6 @@ namespace BusinessLayer.Concrete
         {
             return _messageDal.GetList();
         }
-
         public List<Message> TGetListbyFilter()
         {
             throw new NotImplementedException();
