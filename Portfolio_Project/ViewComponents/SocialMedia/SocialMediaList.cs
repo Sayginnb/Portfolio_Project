@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,11 @@ namespace Portfolio_Project.ViewComponents.SocialMedia
 {
     public class SocialMediaList : ViewComponent
     {
+        SocialMediaManager socialMedia = new SocialMediaManager(new EfSocialMediaDal());
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = socialMedia.TGetList();
+            return View(values);
         }
     }
 }
