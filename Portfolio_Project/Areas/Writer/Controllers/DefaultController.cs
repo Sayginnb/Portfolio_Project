@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Portfolio_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Authorize]
     public class DefaultController : Controller
     {
         AnnouncementManager announcementManager = new AnnouncementManager(new EfAnnouncementDal());

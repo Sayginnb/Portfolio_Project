@@ -2,7 +2,7 @@
 
 namespace Portfolio_Project.Controllers
 {
-    public class AdminLoginController : Controller
+    public class ErrorPageController : Controller
     {
         public IActionResult Index()
         {

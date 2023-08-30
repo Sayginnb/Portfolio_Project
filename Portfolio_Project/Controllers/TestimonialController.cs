@@ -19,6 +19,7 @@ namespace Portfolio_Project.Controllers
             testimonialManager.TDelete(values);
             return RedirectToAction("Index");
         }
+        
         [HttpGet]
         public IActionResult EditTestimonial(int id)
         {
